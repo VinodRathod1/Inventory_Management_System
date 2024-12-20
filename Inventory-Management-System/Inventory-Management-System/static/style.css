@@ -1,0 +1,30 @@
+body{
+    background: #ffe3e3 !important;
+}
+.my-card:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+
+/* Change navbar background color */
+.navbar-info {
+    background-color:  #d64376  !important; 
+}
+
+/* Change card header background color */
+.card-header.bg-info {
+    background-color:#d64376 !important; 
+}
+
+.bg-custom{
+    background-color: #d64376  !important;
+}
+
+.btn-info{
+    background-color: #363fe8  !important; 
+}
+
+.card-body{
+    background-color: #fdf9fd  !important;
+}
+

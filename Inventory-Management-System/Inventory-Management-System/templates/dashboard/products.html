@@ -1,0 +1,88 @@
+{% extends 'partials/base.html' %}
+{% block title %}Product Page{% endblock %}
+
+{% block content %}
+{% include 'partials/topside.html' %}
+    
+    <!--Table-->
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4">
+                <div class="border bg-white p-3">
+                    <h4>Add Products </h4>
+                    <hr>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <!-- {{ form.as_p }}
+                        <input class="btn btn-success btn-block" type="submit" value="Add Product"> -->
+                         <!-- <div class="form-group">
+                            <label for="productName">Name</label>
+                            <input type="text" class="form-control" id="productName" 
+                            placeholder="Enter product name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productQuantity">Quantity</label>
+                            <input type="number" class="form-control" id="productQuantity"  placeholder="Enter quantity" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputState">Category</label>
+                            <input list="categories" id="inputCategory" class="form-control"  placeholder="Choose category...">
+                            <datalist id="categories">
+                                <option value="Stationary">
+                                <option value="Electronics">
+                                <option value="Food">
+                            </datalist>
+                            <small class="form-text text-muted">Select a category from the suggestions below.</small>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="{{ form.name.id_for_label }}">Name</label>
+                            {{ form.name }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.quantity.id_for_label }}">Quantity</label>
+                            {{ form.quantity }}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.category.id_for_label }}">Category</label>
+                            {{ form.category }}
+                            <small class="form-text text-muted">Select a category from the suggestions below.</small>
+                        </div>
+                       <input class="btn btn-success btn-block" type="submit" value="Add Product"> 
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-md-8">
+                <table class="table bg-white">
+                    <thead class="bg-custom" >
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in product %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ p.name }}</td>
+                            <td>{{ p.category }}</td>
+                            <td>{{ p.quantity }}</td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="{% url 'dashboard-products-edit' p.id %}">Edit</a>
+                                <a class="btn btn-danger btn-sm" href="{% url 'dashboard-products-delete' p.id %}">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
